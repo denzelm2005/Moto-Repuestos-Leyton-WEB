@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MotoRepuestosLeytonBackendApplication<Moto_Repuestos_Leyton_Backend>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.Moto_Repuestos_Leyton.Moto_Repuestos_Leyton_Backend.MotoRepuestosLeytonBackendApplication",
+            "projectName": "Moto_Repuestos_Leyton_Backend",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
