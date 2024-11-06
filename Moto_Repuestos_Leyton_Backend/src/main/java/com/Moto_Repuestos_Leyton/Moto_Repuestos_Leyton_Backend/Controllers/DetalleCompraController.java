@@ -51,8 +51,8 @@ public class DetalleCompraController {
     @GetMapping("/listardetallecompra")
     public ResponseEntity<List<DetalleCompra>> getAllDetalleCompras() {
         try {
-            List<DetalleCompra> detalleCompra = detalleCompraServices.getAllDetalleCompra();
-            return new ResponseEntity<>(detalleCompra, HttpStatus.OK);
+            List<DetalleCompra> detalleCompras = detalleCompraServices.getAllDetalleCompra();
+            return new ResponseEntity<>(detalleCompras, HttpStatus.OK);
         } catch (Exception e) {
             LOGGER.error("Error al listar los detalles de compra: {}", e.getMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

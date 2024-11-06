@@ -9,6 +9,12 @@ import com.Moto_Repuestos_Leyton.Moto_Repuestos_Leyton_Backend.Repository.Produc
 import com.Moto_Repuestos_Leyton.Moto_Repuestos_Leyton_Backend.Repository.IProductoServices;
 import java.util.HashMap;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 
 @Service
 public class ProductoServices implements IProductoServices {
@@ -20,8 +26,14 @@ public class ProductoServices implements IProductoServices {
 
     // Servicio para crear un Producto
     @Override
-    public Producto createProducto(Producto producto) {
+    public Producto createProducto(Producto producto, MultipartFile fotografia) {
         try {
+            byte[] FotoBytes = fotografia.getBytes();
+           Path ruta = Paths.get("C:\\Users\\admin\\Downloads\\Moto_Repuestos_Leyton_Backend\\" + 
+            "Moto_Repuestos_Leyton_Backend\\src\\main\\resources\\" + 
+            "Fotografia\\" + fotografia.getOriginalFilename());
+            Files.write(ruta, FotoBytes);
+            producto.setUbicacionFotografia(ruta.toString());
             return productoRepository.save(producto);
         } catch (Exception e) {
             LOGGER.error("Error while creating Producto: {}", e.getMessage());

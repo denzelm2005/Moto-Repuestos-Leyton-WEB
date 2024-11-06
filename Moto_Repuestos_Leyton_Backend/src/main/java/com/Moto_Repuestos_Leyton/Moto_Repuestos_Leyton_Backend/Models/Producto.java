@@ -6,7 +6,7 @@ import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({"id_producto", "nombre", "modelo", "precio_venta", "precio_compra", "stock", "id_marca"}) // Incluye el ID primero
+@JsonPropertyOrder({"id_producto", "nombre", "modelo", "precio_venta", "precio_compra", "stock", "id_marca", "ubicacionfotografia"}) // Incluye el ID primero
 
 @Entity
 @Getter
@@ -35,6 +35,9 @@ public class Producto {
 
     @JsonProperty("id_marca")
     private Integer ID_Marca;
+
+    @JsonProperty("ubicacionfotografia")
+    private String UbicacionFotografia;
 
  
 

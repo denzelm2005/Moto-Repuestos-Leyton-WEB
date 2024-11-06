@@ -10,13 +10,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Moto_Repuestos_Leyton.Moto_Repuestos_Leyton_Backend.Models.Producto;
 import com.Moto_Repuestos_Leyton.Moto_Repuestos_Leyton_Backend.Repository.IProductoServices;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.HashMap;
 import java.util.List;
@@ -31,10 +36,13 @@ public class ProductoController {
     IProductoServices productoServices;
 
     // EndPoint para insertar un Producto
-    @PostMapping("/insertarproducto")
-    public ResponseEntity<Producto> createProducto(@RequestBody Producto producto) {
+    @PostMapping(value = "/insertarproducto", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<Producto> createProducto(@RequestParam ("producto")  String producto,
+   @RequestParam("fotografia") MultipartFile fotografia  ) {
+    ObjectMapper objectMapper = new ObjectMapper();
         try {
-            Producto createdProducto = productoServices.createProducto(producto);
+            Producto Oproducto = objectMapper.readValue(producto, Producto.class);
+            Producto createdProducto = productoServices.createProducto(Oproducto, fotografia);
             return new ResponseEntity<>(createdProducto, HttpStatus.CREATED);
         } catch (Exception e) {
             LOGGER.error("Error al crear el producto: {}", e.getMessage());

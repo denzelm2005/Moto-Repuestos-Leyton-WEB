@@ -3,10 +3,11 @@ package com.Moto_Repuestos_Leyton.Moto_Repuestos_Leyton_Backend.Repository;
 import com.Moto_Repuestos_Leyton.Moto_Repuestos_Leyton_Backend.Models.Producto;
 import java.util.HashMap;
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface IProductoServices {
 
-    public Producto createProducto(Producto producto);  // Método para crear un producto
+    public Producto createProducto(Producto producto, MultipartFile fotografia);  // Método para crear un producto
 
     public HashMap<String, String> deleteProducto(int Id);  // Método para eliminar un producto por ID
 
