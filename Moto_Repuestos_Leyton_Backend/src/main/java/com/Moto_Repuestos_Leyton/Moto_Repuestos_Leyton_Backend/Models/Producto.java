@@ -6,7 +6,7 @@ import lombok.Setter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({"id_producto", "nombre", "modelo", "precio_venta", "precio_compra", "stock", "id_marca", "ubicacionfotografia"}) // Incluye el ID primero
+@JsonPropertyOrder({"id_producto", "nombre", "modelo", "precio_venta", "precio_compra", "stock", "id_marca", "fotografia"}) // Incluye el ID primero
 
 @Entity
 @Getter
@@ -25,10 +25,10 @@ public class Producto {
     private String Modelo;
 
     @JsonProperty("precio_venta")
-    private float PrecioVenta;
+    private float Precio_Venta;
 
     @JsonProperty("precio_compra")
-    private float PrecioCompra;
+    private float Precio_Compra;
 
     @JsonProperty("stock")
     private int Stock;
@@ -36,33 +36,33 @@ public class Producto {
     @JsonProperty("id_marca")
     private Integer ID_Marca;
 
-    @JsonProperty("ubicacionfotografia")
-    private String UbicacionFotografia;
-
- 
+    @JsonProperty("fotografia")
+    private String Fotografia;
 
     // Constructor vacío
     public Producto() {
     }
 
     // Constructor sin ID
-    public Producto(String nombre, String modelo, float precioVenta, float precioCompra, int stock, Integer idMarca) {
+    public Producto(String nombre, String modelo, float precio_Venta, float precio_Compra, int stock, Integer idMarca, String fotografia) {
         this.Nombre = nombre;
         this.Modelo = modelo;
-        this.PrecioVenta = precioVenta;
-        this.PrecioCompra = precioCompra;
+        this.Precio_Venta =  precio_Venta;
+        this.Precio_Compra = precio_Compra;
         this.Stock = stock;
         this.ID_Marca = idMarca;
+        this.Fotografia = fotografia;
     }
 
     // Constructor con ID
-    public Producto(Integer idProducto, String nombre, String modelo, float precioVenta, float precioCompra, int stock, Integer idMarca) {
+    public Producto(Integer idProducto, String nombre, String modelo, float precio_Venta, float precio_Compra, int stock, Integer idMarca, String fotografia) {
         this.ID_Producto = idProducto;
         this.Nombre = nombre;
         this.Modelo = modelo;
-        this.PrecioVenta = precioVenta;
-        this.PrecioCompra = precioCompra;
+        this.Precio_Venta = precio_Venta;
+        this.Precio_Compra = precio_Compra;
         this.Stock = stock;
         this.ID_Marca = idMarca;
+        this.Fotografia = fotografia;
     }
 }
